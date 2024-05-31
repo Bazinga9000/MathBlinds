@@ -1,0 +1,22 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+# This is a (likely god-awful) patch for generally fixing localization of my blinds as a stopgap until steamodded properly handles loc vars 
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "local loc_target = localize{type = 'raw_descriptions', key = blind_choice.config.key, set = 'Blind', vars = {localize(G.GAME.current_round.most_played_poker_hand, 'poker_hands')}}"
+position = "after"
+payload = '''
+if blind_choice.config.key:find("^bl_mathbl") ~= nil then 
+    local blind_obj = G.P_BLINDS[blind_choice.config.key]
+    if blind_obj.loc_vars then
+        local res = blind_obj.loc_vars(blind_obj) or {}
+        loc_target = localize{type = 'raw_descriptions', key = blind_choice.config.key, set = 'Blind', vars = res.vars or {}}
+    end
+end
+'''
+match_indent = true
+overwrite = false
