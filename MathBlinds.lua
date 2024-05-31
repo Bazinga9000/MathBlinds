@@ -2,7 +2,7 @@
 --- MOD_NAME: Math Blinds
 --- MOD_ID: MathBlinds
 --- PREFIX: mathbl
---- MOD_AUTHOR: [Bazinga_9000]
+--- MOD_AUTHOR: [Bazinga_9000, tauttie]
 --- MOD_DESCRIPTION: Adds more blinds based on mathematical symbols
 --- VERSION: 1.0.0
 ----------------------------------------------
@@ -39,7 +39,7 @@ for k, v in ipairs(blind_list) do
     else
         blind.key = v
         blind.discovered = false 
-        
+
         local blind_obj = SMODS.Blind(blind)
 
         for k_, v_ in pairs(blind) do
