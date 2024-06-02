@@ -24,6 +24,10 @@ local RATIO_THRESHOLD = 0.9
 blind.drawn_to_hand = function(self, blind)
     if blind.prepped then
         local ratio = G.GAME.chips / blind.chips
+        -- talisman compat
+        if type(ratio) == "table" then
+            ratio = ratio:to_number()
+        end
         if ratio > RATIO_THRESHOLD and ratio < 1.0 then
             local new_chips = math.floor(blind.chips * 1.25)
             blind:wiggle()
