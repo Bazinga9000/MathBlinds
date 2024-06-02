@@ -20,3 +20,20 @@ end
 '''
 match_indent = true
 overwrite = false
+
+# The Infinite - Ban retriggering of cards
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "reps[#reps+1] = eval"
+position = "at"
+payload = '''
+if G.GAME.blind.name == "bl_mathbl_infinite" and not G.GAME.blind.disabled then 
+    G.GAME.blind:wiggle()
+    G.GAME.blind.triggered = true
+else 
+    reps[#reps+1] = eval
+end
+'''
+match_indent = true
+overwrite = true
