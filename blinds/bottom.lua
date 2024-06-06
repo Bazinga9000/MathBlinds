@@ -11,7 +11,7 @@ local blind = {
 
 blind.debuff_card = function(self, blind, card, from_blind)
     if card.area ~= G.jokers then
-        return card.base.nominal < 7 -- for inter-mod compat
+        return card.ability.effect ~= 'Stone Card' and card.base.nominal < 7 -- for inter-mod compat
     end
 end
 

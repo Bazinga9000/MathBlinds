@@ -4,7 +4,7 @@
 --- PREFIX: mathbl
 --- MOD_AUTHOR: [Bazinga_9000, tauttie]
 --- MOD_DESCRIPTION: Adds more blinds based on mathematical symbols
---- VERSION: 1.1.1
+--- VERSION: 1.1.2
 ----------------------------------------------
 ------------MOD CODE -------------------------
 local blind_list = {

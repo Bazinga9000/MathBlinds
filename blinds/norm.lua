@@ -13,7 +13,7 @@ blind.debuff_hand = function(self, blind, cards, hand, handname, check)
     self.triggered = false
     local total = 0
     for _, v in ipairs(cards) do
-        total = total + v.base.nominal
+        total = total + ((v.ability.effect == 'Stone Card' and 0) or v.base.nominal)
     end
     if total > 21 then
         return true
