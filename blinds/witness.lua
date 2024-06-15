@@ -26,11 +26,11 @@ end
 
 local get_debuff_count = function()
     local ranks = get_ranks()
-    return math.ceil(#ranks / 4)
+    return math.ceil(#ranks / 3)
 end 
 
 blind.loc_vars = function(self, blind)
-    return {vars = {''..(G.GAME and get_debuff_count() or "25% of")}}
+    return {vars = {''..(G.GAME and get_debuff_count() or "33% of")}}
 end
 
 blind.set_blind = function(self, blind, reset, silent)
