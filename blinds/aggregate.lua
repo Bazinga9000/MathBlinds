@@ -16,11 +16,6 @@ blind.loc_vars = function(self, blind)
     return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), self.config.extra.odds}}
 end
 
-blind.process_loc_text = function(self)
-    self.super.process_loc_text(self)
-    self.vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), AGGREGATE_ODDS}
-end
-
 blind.press_play = function(self, blind)
     for _, card in ipairs(G.hand.highlighted) do
         if pseudorandom(pseudoseed('aggregate')) < G.GAME.probabilities.normal/self.config.extra.odds then

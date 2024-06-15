@@ -18,11 +18,6 @@ blind.loc_vars = function(self, blind)
     return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), self.config.extra.odds}}
 end
 
-blind.process_loc_text = function(self)
-    self.super.process_loc_text(self)
-    self.vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), DIAMOND_DIFFERENCE_ODDS}
-end
-
 blind.drawn_to_hand = function(self, blind)
     for k, card in ipairs(G.hand.cards) do
         if pseudorandom(pseudoseed('diamond_difference')) < G.GAME.probabilities.normal/self.config.extra.odds then

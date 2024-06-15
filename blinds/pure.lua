@@ -11,7 +11,7 @@ local blind = {
 
 blind.debuff_card = function(self, blind, card, from_blind)
     if card.area ~= G.jokers then
-        if card.the_pure_data then
+        if card.the_pure_data then -- check if the card was in the original deck
             local orig = card.the_pure_data
             if card.base.value ~= orig.value then -- check rank
                 return true
