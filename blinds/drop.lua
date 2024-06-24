@@ -10,29 +10,29 @@ local blind = {
     pos = { x = 0, y = 17}
 }
 
-blind.set_blind = function(self, blind, reset, silent)
+blind.set_blind = function(self, reset, silent)
     if not blind.disabled then
         blind.hands_sub = 0
     end
 end
 
-blind.disable = function(self, blind)
-    G.hand:change_size(blind.hands_sub)
+blind.disable = function(self)
+    G.hand:change_size(G.GAME.blind.hands_sub)
     --G.FUNCS.draw_from_deck_to_hand(blind.hands_sub)
-    blind.hands_sub = 0
+    G.GAME.blind.hands_sub = 0
 end
 
-blind.defeat = function(self, blind, silent)
-    G.hand:change_size(blind.hands_sub)
+blind.defeat = function(self, silent)
+    G.hand:change_size(G.GAME.blind.hands_sub)
 end
 
-blind.press_play = function(self, blind)
+blind.press_play = function(self)
     sendInfoMessage(G.hand.config.card_limit)
-    sendInfoMessage(blind.hands_sub)
+    sendInfoMessage(G.GAME.blind.hands_sub)
     if G.hand.config.card_limit > 1 then
         G.hand:change_size(-1)
-        blind.hands_sub = blind.hands_sub + 1 -- size removed
-        blind:wiggle()
+        G.GAME.blind.hands_sub = G.GAME.blind.hands_sub + 1 -- size removed
+        G.GAME.blind:wiggle()
     end
 end
 

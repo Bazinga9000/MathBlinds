@@ -12,16 +12,16 @@ local blind = {
     vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), AGGREGATE_ODDS}   
 }
 
-blind.loc_vars = function(self, blind)
+blind.loc_vars = function(self)
     return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), self.config.extra.odds}}
 end
 
-blind.press_play = function(self, blind)
+blind.press_play = function(self)
     for _, card in ipairs(G.hand.highlighted) do
         if pseudorandom(pseudoseed('aggregate')) < G.GAME.probabilities.normal/self.config.extra.odds then
             card:set_debuff(true)
-            blind:wiggle()
-            blind.triggered = true
+            G.GAME.blind:wiggle()
+            G.GAME.blind.triggered = true
         end
     end
 end

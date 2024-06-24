@@ -9,7 +9,7 @@ local blind = {
     pos = { x = 0, y = 11},
 }
 
-blind.debuff_card = function(self, blind, card, from_blind)
+blind.debuff_card = function(self, card, from_blind)
     if card.area ~= G.jokers then
         if card.the_pure_data then -- check if the card was in the original deck
             local orig = card.the_pure_data

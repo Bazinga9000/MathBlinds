@@ -13,20 +13,20 @@ local blind = {
     pos = { x = 0, y = 9}
 }
 
-blind.set_blind = function(self, blind, reset, silent)
-    if not blind.disabled then
+blind.set_blind = function(self, reset, silent)
+    if not G.GAME.blind.disabled then
         G.hand:change_size(HAND_DELTA)
     end
 end
 
-blind.disable = function(self, blind, silent)
+blind.disable = function(self, silent)
     G.hand:change_size(-HAND_DELTA)
-    blind.chips = blind.chips/5
-    blind.chip_text = number_format(blind.chips)
+    G.GAME.blind.chips = blind.chips/5
+    G.GAME.blind.chip_text = number_format(blind.chips)
 end
 
-blind.defeat = function(self, blind, silent)
-    if not blind.disabled then
+blind.defeat = function(self, silent)
+    if not G.GAME.blind.disabled then
         G.hand:change_size(-HAND_DELTA)
     end
 end

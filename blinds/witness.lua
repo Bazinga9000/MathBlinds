@@ -29,24 +29,24 @@ local get_debuff_count = function()
     return math.ceil(#ranks / 3)
 end 
 
-blind.loc_vars = function(self, blind)
+blind.loc_vars = function(self)
     return {vars = {''..(G.GAME and get_debuff_count() or "33% of")}}
 end
 
-blind.set_blind = function(self, blind, reset, silent)
-    blind.debuffed_ranks = {}
+blind.set_blind = function(self, reset, silent)
+    G.GAME.blind.debuffed_ranks = {}
     local ranks = get_ranks()
     for i = 1, get_debuff_count() do
         local rank, k = pseudorandom_element(ranks, pseudoseed('witness'))
-        blind.debuffed_ranks[rank] = true
+        G.GAME.blind.debuffed_ranks[rank] = true
         ranks[k] = nil
     end
 end
 
-blind.debuff_card = function(self, blind, card, from_blind)
+blind.debuff_card = function(self, card, from_blind)
     if card.area ~= G.jokers then
         if card.ability.effect ~= 'Stone Card' then
-            return blind.debuffed_ranks[card.base.value] ~= nil
+            return G.GAME.blind.debuffed_ranks[card.base.value] ~= nil
         else 
             return false
         end

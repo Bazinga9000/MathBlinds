@@ -9,8 +9,8 @@ local blind = {
     pos = { x = 0, y = 7}
 }
 
-blind.press_play = function(self, blind)
-    blind:wiggle()
+blind.press_play = function(self)
+    G.GAME.blind:wiggle()
     for i=1, #G.hand.cards do
         G.hand.cards[i]:set_debuff(true)
     end  
@@ -19,7 +19,7 @@ blind.press_play = function(self, blind)
     end  
 end
 
-blind.drawn_to_hand = function(self, blind)
+blind.drawn_to_hand = function(self)
     for i=1, #G.hand.cards do
         G.hand.cards[i]:set_debuff(false)
     end  

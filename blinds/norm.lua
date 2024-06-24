@@ -9,7 +9,7 @@ local blind = {
     pos = { x = 0, y = 0}
 }
 
-blind.debuff_hand = function(self, blind, cards, hand, handname, check)
+blind.debuff_hand = function(self, cards, hand, handname, check)
     self.triggered = false
     local total = 0
     for _, v in ipairs(cards) do

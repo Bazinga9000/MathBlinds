@@ -11,24 +11,24 @@ local blind = {
     pos = { x = 0, y = 15}
 }
 
-blind.press_play = function(self, blind)
-    blind.prepped = true
+blind.press_play = function(self)
+    G.GAME.blind.prepped = true
 end
 
-blind.drawn_to_hand = function(self, blind)
+blind.drawn_to_hand = function(self)
     if G.jokers then
-        if G.jokers.cards[1] and not G.jokers.cards[1].debuff and blind.prepped then
+        if G.jokers.cards[1] and not G.jokers.cards[1].debuff and G.GAME.blind.prepped then
             for _, card in ipairs(G.jokers.cards) do
                 card:set_debuff(false)
             end
             G.jokers.cards[1]:set_debuff(true)
             G.jokers.cards[1]:juice_up()
-            blind:wiggle()
+            G.GAME.blind:wiggle()
             local last = #G.jokers.cards
-            if last > 1 and G.jokers.cards[last] and not G.jokers.cards[last].debuff and blind.prepped then
+            if last > 1 and G.jokers.cards[last] and not G.jokers.cards[last].debuff and G.GAME.blind.prepped then
                 G.jokers.cards[last]:set_debuff(true)
                 G.jokers.cards[last]:juice_up()
-                blind:wiggle()
+                G.GAME.blind:wiggle()
             end
         end
         blind.prepped = false

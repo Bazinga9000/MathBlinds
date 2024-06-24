@@ -14,11 +14,11 @@ local blind = {
     vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), DIAMOND_DIFFERENCE_ODDS}
 }
 
-blind.loc_vars = function(self, blind)
+blind.loc_vars = function(self)
     return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), self.config.extra.odds}}
 end
 
-blind.drawn_to_hand = function(self, blind)
+blind.drawn_to_hand = function(self)
     for k, card in ipairs(G.hand.cards) do
         if pseudorandom(pseudoseed('diamond_difference')) < G.GAME.probabilities.normal/self.config.extra.odds then
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
@@ -36,7 +36,7 @@ blind.drawn_to_hand = function(self, blind)
                     local behavior = rank_data.strength_effect or { fixed = 1, ignore = false, random = false }
                     local rank_suffix = ''
                     local next_data = rank_data.next
-                    blind:wiggle()
+                    G.GAME.blind:wiggle()
                     if pseudorandom(pseudoseed('diamond_difference_shift')) < 1/2 then
                         -- going down
                         -- we must iterate through all ranks to see which ranks point to this rank 
