@@ -11,8 +11,8 @@ local blind = {
 }
 
 blind.set_blind = function(self, reset, silent)
-    if not blind.disabled then
-        blind.hands_sub = 0
+    if not G.GAME.blind.disabled then
+        G.GAME.blind.hands_sub = 0
     end
 end
 

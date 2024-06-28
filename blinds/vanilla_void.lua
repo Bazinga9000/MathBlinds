@@ -14,7 +14,7 @@ local blind = {
 blind.set_blind = function(self, reset, silent)
     for _, card in ipairs(G.playing_cards) do 
         card.backup_get_chip_bonus = card.get_chip_bonus
-        card.get_chip_bonus = function() blind:wiggle(); return 0 end
+        card.get_chip_bonus = function() G.GAME.blind:wiggle(); return 0 end
     end
 end
 
