@@ -4,7 +4,7 @@
 --- PREFIX: mathbl
 --- MOD_AUTHOR: [Bazinga_9000, tauttie]
 --- MOD_DESCRIPTION: Adds more blinds based on mathematical symbols
---- VERSION: 1.2.2
+--- VERSION: 1.2.2b
 ----------------------------------------------
 ------------MOD CODE -------------------------
 local blind_list = {
@@ -17,7 +17,7 @@ local blind_list = {
     "floor",
     "drop",
     "approach",
-    "pure",
+    -- "pure",
     "infinite",
     "witness",
     "diamond_difference",
