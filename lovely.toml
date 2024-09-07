@@ -10,12 +10,28 @@ target = "functions/state_events.lua"
 pattern = "reps[#reps+1] = eval"
 position = "at"
 payload = '''
-if G.GAME.blind.name == "bl_mathbl_infinite" and not G.GAME.blind.disabled then 
+if G.GAME.blind.name == "bl_mathbl_infinite" and not G.GAME.blind.disabled then
     G.GAME.blind:wiggle()
     G.GAME.blind.triggered = true
-else 
+else
     reps[#reps+1] = eval
 end
 '''
 match_indent = true
 overwrite = true
+
+# I [discord user elbebeta] learned how to do regex patches for this (fixes syntax for last 3 patches)
+[[patches]]
+[patches.regex]
+target = "functions/state_events.lua"
+pattern = '''for h[ ]*\= 1, eval\.jokers\.repetitions do
+[ \t]*if G\.GAME\.blind.name \=\= "bl_mathbl_infinite" and not G\.GAME\.blind\.disabled then
+[ \t]*G\.GAME\.blind:wiggle\(\)
+[ \t]*G\.GAME\.blind\.triggered \= true
+[ \t]*else
+[ \t]*reps\[#reps\+1\] \= eval
+[ \t]*end
+[ \t]*end
+[ \t]*end'''
+position = "after"
+payload = " end})"
