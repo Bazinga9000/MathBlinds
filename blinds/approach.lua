@@ -34,7 +34,7 @@ blind.drawn_to_hand = function(self)
             G.E_MANAGER:add_event(Event({
                 trigger = 'ease',
                 blocking = false,
-                ref_table = blind,
+                ref_table = G.GAME.blind,
                 ref_value = 'chips',
                 ease_to = new_chips,
                 delay =  0.5,
